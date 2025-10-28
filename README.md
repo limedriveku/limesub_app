@@ -30,7 +30,7 @@ Also normalizes and resamples input `.ass` to 1920×1080 with `Basic Comical NC`
 
 \# Build GUI exe (no console) for Windows
 
-go build -ldflags="-H=windowsgui -s -w" -o limesubv3.exe main.go parsers.go pipeline.go ass_resample.go utils.go messagebox_windows.go
+go build -ldflags="-H=windowsgui -s -w" -o limesubv3.exe limesubv3.go
 
 
 
