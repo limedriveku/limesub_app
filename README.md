@@ -16,11 +16,11 @@ Also normalizes and resamples input `.ass` to 1920×1080 with `Basic Comical NC`
 
 \- Support: SRT, JSON, XML, TTML, ASS (resample)
 
-\- Auto-naming: `<name>\_Limenime.ass` with auto-numbering
+\- Auto-naming: `<name>_Limenime.ass` with auto-numbering
 
 \- Windows MessageBox on double-click/no-args \& unknown format
 
-\- Cross-build scripts (build\_all.sh) and GitHub Actions example
+\- Cross-build scripts (build_all.sh) and GitHub Actions example
 
 
 
@@ -30,7 +30,8 @@ Also normalizes and resamples input `.ass` to 1920×1080 with `Basic Comical NC`
 
 \# Build GUI exe (no console) for Windows
 
-go build -ldflags="-H=windowsgui -s -w" -o limesubv3.exe main.go parsers.go pipeline.go ass\_resample.go utils.go messagebox\_windows.go
+go build -ldflags="-H=windowsgui -s -w" -o limesubv3.exe main.go parsers.go pipeline.go ass_resample.go utils.go messagebox_windows.go
+
 
 
 
