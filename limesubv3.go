@@ -1,6 +1,8 @@
 package main
 
 import (
+    "runtime"
+    "golang.org/x/sys/windows"
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
@@ -34,11 +36,22 @@ var (
 	procMessageBoxW  = user32.NewProc("MessageBoxW")
 )
 
+// ====================== MESSAGEBOX ======================
+
 func MessageBox(title, text string) {
-	titleUTF16, _ := windows.UTF16PtrFromString(title)
-	textUTF16, _ := windows.UTF16PtrFromString(text)
-	procMessageBoxW.Call(0, uintptr(unsafe.Pointer(textUTF16)), uintptr(unsafe.Pointer(titleUTF16)), 0)
+	// Jika berjalan di Windows, tampilkan GUI message box
+	if runtime.GOOS == "windows" {
+		user32 := windows.NewLazySystemDLL("user32.dll")
+		procMessageBoxW := user32.NewProc("MessageBoxW")
+		titleUTF16, _ := windows.UTF16PtrFromString(title)
+		textUTF16, _ := windows.UTF16PtrFromString(text)
+		procMessageBoxW.Call(0, uintptr(unsafe.Pointer(textUTF16)), uintptr(unsafe.Pointer(titleUTF16)), 0)
+	} else {
+		// fallback untuk Linux/macOS
+		fmt.Printf("[%s] %s\n", title, text)
+	}
 }
+
 
 // ====================== UTILITIES ======================
 
@@ -325,3 +338,4 @@ func main() {
 
 	fmt.Println("✅ Berhasil mengonversi:", filepath.Base(inputPath), "→", filepath.Base(outPath))
 }
+
