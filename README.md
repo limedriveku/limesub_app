@@ -2,7 +2,7 @@
 
 
 
-Converts SRT / JSON / XML / TTML → ASS (Limenime style), in-memory pipeline.
+Converts SRT / JSON (Youtube) / XML (IQIYI) / TTML (Youtube) → ASS (Limenime style), in-memory pipeline.
 
 Also normalizes and resamples input `.ass` to 1920×1080 with `Basic Comical NC` font.
 
@@ -31,6 +31,7 @@ Also normalizes and resamples input `.ass` to 1920×1080 with `Basic Comical NC`
 \# Build GUI exe (no console) for Windows
 
 go build -ldflags="-H=windowsgui -s -w" -o limesubv3.exe main.go parsers.go pipeline.go ass_resample.go utils.go messagebox_windows.go
+
 
 
 
