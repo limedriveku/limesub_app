@@ -1,0 +1,15 @@
+# Gunakan LF (Linux style) untuk semua file teks
+* text eol=lf
+
+# File biner (tidak diubah line ending)
+*.exe binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.ttf binary
+
+# Pastikan Go code dianggap bahasa utama
+*.go linguist-detectable=true
+
+# Abaikan file build / artifact
+dist/* linguist-vendored

@@ -1,0 +1,25 @@
+name: Go Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: "1.21"
+    - name: Build linux
+      run: |
+        go build -o limesubv3-linux main.go parsers.go pipeline.go ass_resample.go utils.go
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: limesubv3-linux
+        path: limesubv3-linux
